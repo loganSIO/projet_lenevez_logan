@@ -1,0 +1,55 @@
+<div>
+  <div>
+    <h1>My Cart</h1>
+    <a [routerLink]="['/products']">Continue shopping</a
+    >
+  </div>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of items$ | async; track item.product.id) {
+      <tr>
+        <td>
+          <div>
+            <div>
+              <h2>{{ item.product.title }}</h2>
+              <p>
+                {{ item.product.artist }}
+              </p>
+              <p>
+                {{ item.product.editor }}
+              </p>
+              <p>{{ item.product.price | currency: "EUR" }}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div>
+            {{ item.quantity }}
+            <app-shopping-cart-remove
+              [product]="item.product"
+            ></app-shopping-cart-remove>
+          </div>
+        </td>
+        <td>
+          {{ item.quantity * item.product.price | currency: "EUR" }}
+        </td>
+      </tr>
+    }
+  </tbody>
+  <tfoot>
+    <tr>
+      <td>Total</td>
+      <td>
+        {{ totalQuantity$ | async }}
+      </td>
+      <td>
+        {{ totalPrice$ | async | currency: "EUR" }}
+      </td>

@@ -1,0 +1,20 @@
+<form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+  <h1 class="text-tertiary text-3xl font-bold text-center mb-5">Add a card</h1>
+  <div>
+    <label class="block text-tertiary text-xs font-bold mb-2" for="name">Name</label>
+    <input formControlName="name" type="text" placeholder="Name" class="block appearance-none w-full bg-white text-gray-700 py-3 px-4 pr-8 rounded-xl border border-gray-500 leading-tight focus:outline-none focus:border-gray-700" required />
+  </div>
+  <div>
+    <label class="block text-tertiary text-xs font-bold mb-2" for="code">Code</label>
+    <input formControlName="code" type="text" placeholder="1234 5678 9012 3456" class="block appearance-none w-full bg-white text-gray-700 py-3 px-4 pr-8 rounded-xl border border-gray-500 leading-tight focus:outline-none focus:border-gray-700" required />
+  </div>
+  <div>
+    <label class="block text-tertiary text-xs font-bold mb-2" for="ccv">CCV</label>
+    <input formControlName="ccv" type="text" placeholder="123" class="block appearance-none w-full bg-white text-gray-700 py-3 px-4 pr-8 rounded-xl border border-gray-500 leading-tight focus:outline-none focus:border-gray-700" required />
+  </div>
+  <div>
+    <label class="block text-tertiary text-xs font-bold mb-2" for="expiration">Month/Year</label>
+    <input formControlName="expiration" type="text" placeholder="MM/YY" class="block appearance-none w-full bg-white text-gray-700 py-3 px-4 pr-8 rounded-xl border border-gray-500 leading-tight focus:outline-none focus:border-gray-700" required />
+  </div>
+  <button type="submit" [ngClass]="{ 'bg-tertiary': cardForm.valid, 'cursor-not-allowed opacity-50': !cardForm.valid }" [disabled]="!cardForm.valid" class="mt-2 px-4 py-2 rounded text-white">Add Card</button>
+</form>

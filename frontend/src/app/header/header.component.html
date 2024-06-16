@@ -1,0 +1,21 @@
+<header class="header">
+  <div class="logo">
+    <a href="/">
+      <img src="assets/img/logo.png" alt="Logo">
+    </a>
+  </div>
+  <nav class="navbar">
+    <ul class="nav-list">
+      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="/products">Products</a></li>
+      <ng-container *ngIf="auth.isAuthenticated">
+        <li><a routerLink="/card">Card</a></li>
+        <li><app-shopping-cart-link></app-shopping-cart-link></li>
+      </ng-container>
+      <ng-container *ngIf="!auth.isAuthenticated">
+        <li><a routerLink="/form">Register</a></li>
+        <li><a routerLink="/login">Login</a></li>
+      </ng-container>
+    </ul>
+  </nav>
+</header>
